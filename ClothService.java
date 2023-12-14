@@ -4,6 +4,7 @@ package ecomProject;
 
 public interface ClothService {
     void addClothes();
+    //
     void displayClothes();
     void UpdateClothes();
     void  RemoveClothes();
