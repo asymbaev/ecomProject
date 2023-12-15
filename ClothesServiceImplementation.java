@@ -3,6 +3,7 @@ package ecomProject;
 public class ClothesServiceImplementation implements ClothService {
     @Override
     public void addClothes() {
+        addClothes();
 
     }
 

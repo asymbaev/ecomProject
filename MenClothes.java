@@ -1,13 +1,13 @@
 package ecomProject;
 
 public class MenClothes extends Clothes{
-    private String jeans;
-    private String Costums;
+    private String[] jeans;
+    private String[] Costums;
 
     public MenClothes(String name, int id, double price, String jeans, String costums) {
         super(name, id, price);
-        this.jeans = jeans;
-        Costums = costums;
+        this.jeans = new String[]{jeans};
+        this.Costums = new String[]{costums};
     }
 
     public MenClothes(String name, int id, double price) {
@@ -15,20 +15,20 @@ public class MenClothes extends Clothes{
 
     }
 
-    public String getJeans() {
+    public String[] getJeans() {
         return jeans;
     }
 
     public void setJeans(String jeans) {
-        this.jeans = jeans;
+        this.jeans = new String[]{jeans};
     }
 
-    public String getCostums() {
+    public String[] getCostums() {
         return Costums;
     }
 
     public void setCostums(String costums) {
-        Costums = costums;
+        Costums = new String[]{costums};
     }
 
     @Override
