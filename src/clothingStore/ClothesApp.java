@@ -1,12 +1,14 @@
-package ecomProject;
+package ecomProject.src.clothingStore;
 
 import java.util.Scanner;
 
-public class Main {
+public class ClothesApp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Type 1 for men's clothing and type 2 women's clothing: ");
         Integer gender = sc.nextInt();
+
+        ClothServiceImpl service = new ClothServiceImpl();
 
 
         System.out.println("""
