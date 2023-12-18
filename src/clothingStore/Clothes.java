@@ -2,26 +2,18 @@ package ecomProject.src.clothingStore;
 
 
 public class Clothes {
-    private String type;
-    private int id;
-    private int quantity;
-    private double price;
-    private double size;
+    int id;
+    String type;
+    double size;
+    double price;
+    int quantity;
 
-    public Clothes(String type, int id, int quantity, double price, double size) {
-        this.type = type;
+    public Clothes(int id, String type, double size, double price, int quantity) {
         this.id = id;
-        this.quantity = quantity;
-        this.price = price;
-        this.size = size;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
         this.type = type;
+        this.size = size;
+        this.price = price;
+        this.quantity = quantity;
     }
 
     public int getId() {
@@ -32,20 +24,12 @@ public class Clothes {
         this.id = id;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getType() {
+        return type;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getSize() {
@@ -56,16 +40,32 @@ public class Clothes {
         this.size = size;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
         return "Clothes{" +
-                "type='" + type + '\'' +
-                ", id=" + id +
-                ", quantity=" + quantity +
-                ", price=" + price +
+                "id=" + id +
+                ", type='" + type + '\'' +
                 ", size=" + size +
+                ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
     }
 }
-
+//Clothes //
 
