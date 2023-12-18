@@ -1,7 +1,6 @@
 package ecomProject.src.clothingStore;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ClothServiceImpl implements ClothesService {
 
@@ -17,15 +16,6 @@ public class ClothServiceImpl implements ClothesService {
         clothList.add(clothes);
         System.out.println("Item added successfully");
     }
-
-    @Override
-    public List<Clothes> getClothes() {
-        return clothList;
-    }
-
-
-
-
     @Override
     public void displayClothes() {
 
@@ -38,27 +28,34 @@ public class ClothServiceImpl implements ClothesService {
         }
 
     }
-
     @Override
-    public void UpdateClothes(Integer id, Clothes cloth) {
+    public void UpdateClothesById(Integer id, Clothes cloth) {
+        // changed c1 to clothesToUpdate
+        // changed cloth to clothesToRemove
+        // just added else
 
-        for (Clothes cl : clothList) {
-            if (cl.getId() == id) {
-                cl.setId(cloth.getId());
-                cl.setPrice(cl.getPrice());
-                System.out.println("product successfully updated");
+        for (Clothes clothesToUpdate : clothList) {
+            if (clothesToUpdate.getId() == id) {
+                clothesToUpdate.setId(cloth.getId());
+                clothesToUpdate.setPrice(clothesToUpdate.getPrice());
+                System.out.println("Item successfully updated");
+
+            } else {
+                System.out.println("Item with id " + id + " not found");
+
             }
         }
 
     }
 
     @Override
-    public void RemoveClothes(Clothes cloth) {
-        if (getClothes().remove(cloth)) {
-            System.out.println("Item removed successfully");
-        } else {
-            System.out.println("product not found ");
-        }
+    public void RemoveClothesById(Integer id, Clothes cloth) {
+        for ( Clothes clothesToRemove: clothList){
+            if(clothesToRemove.getId()==id){
+                clothList.remove(clothesToRemove);
+                System.out.println("Item removed successfully!");
 
+    }
+        }
     }
 }

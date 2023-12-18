@@ -1,14 +1,13 @@
-package ecomProject;
+package ecomProject.src.clothingStore;
 
 //in this method we will use basically some services such as add display and other
 
-public interface ClothService {
+public interface ClothesService {
     void addClothes(Clothes clothes);
-
-
-    //
     void displayClothes();
-    void UpdateClothes();
-    void  RemoveClothes();
+    // changed implementation name
+    void UpdateClothesById(Integer id, Clothes cloth);
+
+    void RemoveClothesById(Integer id, Clothes cloth);
 
 }
