@@ -1,11 +1,11 @@
 package ecomProject.src.clothingStore;
 
+import java.sql.Connection;
 import java.util.ConcurrentModificationException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ClothingStoreApp {
-
 
     public static Clothes createClothes(Scanner sc) {
         System.out.println("Please enter the Clothes id: ");
@@ -26,7 +26,7 @@ public class ClothingStoreApp {
 
         JDBConnection.getConnection();
         Scanner sc = new Scanner(System.in);
-        ClothingServiceImp serviceImp = new ClothingServiceImp();
+        ClothingServiceImp serviceImp = new ClothingServiceImp(JDBConnection.getConnection());
         int choice;
         boolean options = true;
         try {
