@@ -1,7 +1,5 @@
 package ecomProject.src.clothingStore;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.sql.Connection;
@@ -16,19 +14,12 @@ public class ClothingServiceImp implements ClothingService {
 
     private ArrayList<Clothes> clothesList = new ArrayList<>();
 
+    public ClothingServiceImp() {
+        this.clothesList = clothesList;
+    }
+
     @Override
     public void addClothes(Clothes clothes) {
-        try (PreparedStatement statement= connection.prepareStatement("INSERT INTO Clothing_DB(id,type,size,price,quantity) VALUES(?,?,?,?,?,?)")){
-            statement.setInt(1,clothes.getId());
-            statement.setString(2, clothes.getType());
-            statement.setDouble(3,clothes.getSize());
-            statement.setDouble(4,clothes.getPrice());
-            statement.setInt(5,clothes.getQuantity());
-            statement.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
         clothesList.add(clothes);
         System.out.println("Added successfully!");
     }
