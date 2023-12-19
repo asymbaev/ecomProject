@@ -29,7 +29,7 @@ public class ClothingStoreApp {
 
     public static void main(String[] args) {
 
-        JDBConnection.getConnection();
+        clothingStore.JDBConnection.getConnection();
         Scanner sc = new Scanner(System.in);
         ClothingServiceImp serviceImp = new ClothingServiceImp();
         int choice;

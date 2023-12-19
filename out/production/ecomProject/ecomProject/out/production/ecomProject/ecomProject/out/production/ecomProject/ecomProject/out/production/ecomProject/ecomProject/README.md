@@ -1,2 +1,0 @@
-# ecomProject
-Java Ecommmerce project
