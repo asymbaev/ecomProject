@@ -1,4 +1,4 @@
-package ecomProject.src.clothingStore;
+package clothingStore;
 
 
 public class Clothes {

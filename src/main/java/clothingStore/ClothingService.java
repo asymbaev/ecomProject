@@ -1,6 +1,8 @@
-package ecomProject.src.clothingStore;
+package clothingStore;
 
 //in this method we will use basically some services such as add display and other
+
+import clothingStore.Clothes;
 
 public interface ClothingService {
     void addClothes  (Clothes clothes);

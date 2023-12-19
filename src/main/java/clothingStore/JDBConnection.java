@@ -1,12 +1,12 @@
-package ecomProject.src.clothingStore;
+package clothingStore;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class JDBConnection {
-    private static final String DB_URL="jdbc:mysql://127.0.0.1:3306/Clothing_DB";
+    private static final String DB_URL="jdbc:mysql://localhost:3306/Clothing_DB";
     private static final String DB_USER="root";
-    private static final String DB_PASSWORD="";
+    private static final String DB_PASSWORD="1234";
 
     public static Connection getConnection(){
         Connection conn =null;
