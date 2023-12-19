@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class ClothingStoreApp {
 
+
     public static Clothes createClothes(Scanner sc) {
         System.out.println("Please enter the Clothes id: ");
         int id = sc.nextInt();
@@ -22,6 +23,8 @@ public class ClothingStoreApp {
     }
 
     public static void main(String[] args) {
+
+        JDBConnection.getConnection();
         Scanner sc = new Scanner(System.in);
         ClothingServiceImp serviceImp = new ClothingServiceImp();
         int choice;

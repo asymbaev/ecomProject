@@ -2,8 +2,16 @@ package ecomProject.src.clothingStore;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.sql.Connection;
 
 public class ClothingServiceImp implements ClothingService {
+
+    private Connection connection;
+
+    public ClothingServiceImp(Connection connection) {
+        this.connection = connection;
+    }
+
     private ArrayList<Clothes> clothesList = new ArrayList<>();
 
     public ClothingServiceImp() {
