@@ -2,13 +2,14 @@ package clothingStore;
 
 //in this method we will use basically some services such as add display and other
 
-import clothingStore.Clothes;
+import java.util.List;
 
 public interface ClothingService {
     void addClothes  (Clothes clothes);
-    void displayClothes();
+    List<Clothes> displayClothes();
 
-    void removeClothesById(int Id);
+    Clothes removeClothesById(int Id);
 
     void updateClothesByType(String type);
+
 }

@@ -1,11 +1,10 @@
-package ecomProject.src.clothingStore;
+package clothingStore;
 
-import java.util.ConcurrentModificationException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ClothingStoreApp {
-
+    private static ClothingService clothingService = new ClothingServiceImp(JDBConnection.getConnection());
 
     public static Clothes createClothes(Scanner sc) {
         System.out.println("Please enter the Clothes id: ");
@@ -19,6 +18,7 @@ public class ClothingStoreApp {
         System.out.println("Please enter the quantity");
         int quantity = sc.nextInt();
         Clothes c2 = new Clothes(id, type, size, price, quantity);
+        clothingService.addClothes(c2);
         return (c2);
     }
 

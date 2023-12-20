@@ -6,14 +6,14 @@ import java.sql.DriverManager;
 public class JDBConnection {
     private static final String DB_URL="jdbc:mysql://localhost:3306/Clothing_DB";
     private static final String DB_USER="root";
-    private static final String DB_PASSWORD="1234";
+    private static final String DB_PASSWORD="";
 
-    public static Connection getConnection(){
-        Connection conn =null;
+    public static Connection getConnection() {
+        Connection conn = null;
         try {
-            conn = DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
+            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             System.out.println("Connected Successfully");
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return conn;

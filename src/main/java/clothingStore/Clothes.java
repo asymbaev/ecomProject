@@ -2,11 +2,11 @@ package clothingStore;
 
 
 public class Clothes {
-    int id;
-    String type;
-    double size;
-    double price;
-    int quantity;
+    static int id;
+    static String type;
+    static double size;
+    static double price;
+    static int quantity;
 
     public Clothes(int id, String type, double size, double price, int quantity) {
         this.id = id;
@@ -16,7 +16,7 @@ public class Clothes {
         this.quantity = quantity;
     }
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
@@ -24,7 +24,7 @@ public class Clothes {
         this.id = id;
     }
 
-    public String getType() {
+    public static String getType() {
         return type;
     }
 
@@ -32,7 +32,7 @@ public class Clothes {
         this.type = type;
     }
 
-    public double getSize() {
+    public static double getSize() {
         return size;
     }
 
@@ -40,7 +40,7 @@ public class Clothes {
         this.size = size;
     }
 
-    public double getPrice() {
+    public static double getPrice() {
         return price;
     }
 
@@ -48,7 +48,7 @@ public class Clothes {
         this.price = price;
     }
 
-    public int getQuantity() {
+    public static int getQuantity() {
         return quantity;
     }
 
