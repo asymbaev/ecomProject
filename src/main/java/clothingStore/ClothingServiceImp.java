@@ -12,18 +12,18 @@ public class ClothingServiceImp implements ClothingService {
     private Connection connection;
 
     public ClothingServiceImp(Connection connection) {
-        this.connection = connection;
+        this.connection = JDBConnection.getConnection();
     }
 
-    private ArrayList<Clothes> clothesList = new ArrayList<>();
+   // private ArrayList<Clothes> clothesList = new ArrayList<>();
 
-    public ClothingServiceImp() {
-        this.clothesList = clothesList;
-    }
+//    public ClothingServiceImp() {
+//        this.clothesList = clothesList;
+
 
     @Override
     public void addClothes(Clothes clothes) {
-        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO Clothing_DB(id, type, size, price, quantity) VALUES (?,?,?,?,?)"))
+        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO clothes(id, type, size, price, quantity) VALUES (?,?,?,?,?)"))
                 {
                     statement.setInt(1, clothes.getId());
                     statement.setString(2, clothes.getType());
@@ -44,7 +44,7 @@ public class ClothingServiceImp implements ClothingService {
     public List<Clothes> displayClothes() {
         List<Clothes> clothesList = new ArrayList<>();
 
-        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Clothing_DB")) {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM clothes")) {
             try (ResultSet rs = statement.executeQuery()) {
                 while (rs.next()) {
                     int id = rs.getInt("id");
@@ -72,9 +72,10 @@ public class ClothingServiceImp implements ClothingService {
 
     @Override
     public Clothes removeClothesById(int Id) {
-        try (PreparedStatement statement = connection.prepareStatement("DELETE FROM Clothing_DB WHERE id =?")) {
+        try (PreparedStatement statement = connection.prepareStatement("DELETE FROM clothes WHERE id =?")) {
             statement.setInt(1, Id);
             statement.executeUpdate();
+            System.out.println("Successfully removed");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -101,12 +102,14 @@ public class ClothingServiceImp implements ClothingService {
 
     @Override
     public void updateClothesByType(String type) {
-        try(PreparedStatement statement = connection.prepareStatement("UPDATE Clothing_DB SET id = ? type = ? size =? price=? quantity=? WHERE id = ? ")) {
+        try(PreparedStatement statement = connection.prepareStatement("UPDATE clothes SET id = ? type = ? size =? price=? quantity=? WHERE id = ? ")) {
         statement.setInt(1, Clothes.getId());
         statement.setString(2, Clothes.getType());
         statement.setDouble(3, Clothes.getSize());
         statement.setDouble(4, Clothes.getPrice());
         statement.setInt(5, Clothes.getQuantity());
+        statement.executeUpdate();
+            System.out.println("Updated Successfully thank You");
 
         }catch (SQLException e){
             System.out.println(e.getMessage());

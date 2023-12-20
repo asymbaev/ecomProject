@@ -26,7 +26,8 @@ public class ClothingStoreApp {
 
         clothingStore.JDBConnection.getConnection();
         Scanner sc = new Scanner(System.in);
-        ClothingServiceImp serviceImp = new ClothingServiceImp();
+        //ClothingServiceImp serviceImp = new ClothingServiceImp();
+        ClothingService service= new ClothingServiceImp(JDBConnection.getConnection());
         int choice;
         boolean options = true;
         try {
@@ -45,26 +46,26 @@ public class ClothingStoreApp {
                     case 1:
                         sc.nextLine();
                         Clothes c1 = createClothes(sc);
-                        serviceImp.addClothes(c1);
-                        serviceImp.displayClothes();
+                        service.addClothes(c1);
+                        service.displayClothes();
                         break;
                     case 2:
                         System.out.println("Your clothes list");
-                        serviceImp.displayClothes();
+                        service.displayClothes();
                         break;
                     case 3:
-                        serviceImp.displayClothes();
+                        service.displayClothes();
                         sc.nextLine();
                         System.out.println("Enter clothes id to remove: ");
                         int id = sc.nextInt();
-                        serviceImp.removeClothesById(id);
+                        service.removeClothesById(id);
                         break;
                     case 4:
                         sc.nextLine();
-                        serviceImp.displayClothes();
+                        service.displayClothes();
                         System.out.println("Enter the clothes type to update");
                         String type2 = sc.next();
-                        serviceImp.updateClothesByType(type2);
+                        service.updateClothesByType(type2);
                         System.out.println("Please create the updated item");
                         Clothes updatedItem = createClothes(sc);
                         System.out.println(updatedItem);
@@ -78,7 +79,6 @@ public class ClothingStoreApp {
         }catch (InputMismatchException e){
             System.out.println("Sorry ,Wrong input! ");
         }
-
     }
 }
 
