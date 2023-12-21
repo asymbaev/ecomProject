@@ -74,7 +74,7 @@ public class ClothingServiceImp implements ClothingService {
                     double size = rs.getDouble("size");
                     double price = rs.getDouble("price");
                     int quantity = rs.getInt("quantity");
-
+//                    System.out.println(id);
                     Clothes clothes = new Clothes(id, type, size, price, quantity);
                     clothesList.add(clothes);
                 }
@@ -124,13 +124,13 @@ public class ClothingServiceImp implements ClothingService {
 //        }
 
     @Override
-    public void updateClothesById(int id2)  {
+    public void updateClothesById(int id2, Clothes clothes)  {
         try (PreparedStatement statement = connection.prepareStatement("UPDATE clothes SET id = ? type = ? size =? price=? quantity=? WHERE id = ? ")) {
-            statement.setInt(1, Clothes.getId());
-            statement.setString(2, Clothes.getType());
-            statement.setDouble(3, Clothes.getSize());
-            statement.setDouble(4, Clothes.getPrice());
-            statement.setInt(5, Clothes.getQuantity());
+            statement.setInt(1, clothes.getId());
+            statement.setString(2, clothes.getType());
+            statement.setDouble(3, clothes.getSize());
+            statement.setDouble(4, clothes.getPrice());
+            statement.setInt(5, clothes.getQuantity());
 
             statement.executeUpdate();
 

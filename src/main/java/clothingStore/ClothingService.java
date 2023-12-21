@@ -13,6 +13,6 @@ public interface ClothingService {
 
     Clothes removeClothesById(int Id);
 
-    void updateClothesById(int id2);
+    void updateClothesById(int id2, Clothes clothes);
 
 }

@@ -51,6 +51,7 @@ public class ClothingStoreApp {
                         service.displayClothes();
                         break;
                     case 2:
+                        System.out.println("Your list of items on our current cart: ");
                         displayBooks(sc);
 //                        service.displayClothes();
 //                        System.out.println("Your clothes list");
@@ -68,9 +69,11 @@ public class ClothingStoreApp {
                         service.displayClothes();
                         System.out.println("Enter the clothes id to update");
                         int id2 = sc.nextInt();
-                        service.updateClothesById(id2);
-                        System.out.println("Please create the updated item");
+                        System.out.println("Please create the new item");
                         Clothes updatedItem = createClothes(sc);
+                        service.updateClothesById(id2, updatedItem);
+
+
                         service.removeClothesById(id2);
                         System.out.println(updatedItem);
 
@@ -90,7 +93,7 @@ public class ClothingStoreApp {
 
     private static void displayBooks(Scanner sc) throws SQLException {
         for (Clothes clothes : clothingService.displayClothes()) {
-            System.out.println(clothes);
+            System.out.println(clothes.toString());
         }
     }
 }
