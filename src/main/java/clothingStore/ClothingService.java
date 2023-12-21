@@ -1,15 +1,18 @@
 package clothingStore;
+import java.sql.SQLException;
+import java.util.List;
 
 //in this method we will use basically some services such as add display and other
 
-import java.util.List;
+import java.util.Scanner;
 
 public interface ClothingService {
+
     void addClothes  (Clothes clothes);
-    List<Clothes> displayClothes();
+    List <Clothes> displayClothes() throws SQLException;
 
     Clothes removeClothesById(int Id);
 
-    void updateClothesByType(String type);
+    void updateClothesById(int id2);
 
 }

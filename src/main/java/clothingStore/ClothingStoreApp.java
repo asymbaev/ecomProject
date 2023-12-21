@@ -1,5 +1,6 @@
 package clothingStore;
 
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,9 +18,9 @@ public class ClothingStoreApp {
         double price = sc.nextDouble();
         System.out.println("Please enter the quantity");
         int quantity = sc.nextInt();
-        Clothes c2 = new Clothes(id, type, size, price, quantity);
-        clothingService.addClothes(c2);
-        return (c2);
+        Clothes clothesList = new Clothes(id, type, size, price, quantity);
+        clothingService.addClothes(clothesList);
+        return (clothesList);
     }
 
     public static void main(String[] args) {
@@ -27,9 +28,9 @@ public class ClothingStoreApp {
         clothingStore.JDBConnection.getConnection();
         Scanner sc = new Scanner(System.in);
         //ClothingServiceImp serviceImp = new ClothingServiceImp();
-        ClothingService service= new ClothingServiceImp(JDBConnection.getConnection());
+        ClothingService service = new ClothingServiceImp(JDBConnection.getConnection());
         int choice;
-        boolean options = true;
+        boolean option = true;
         try {
             do {
                 System.out.println("""
@@ -50,8 +51,10 @@ public class ClothingStoreApp {
                         service.displayClothes();
                         break;
                     case 2:
-                        System.out.println("Your clothes list");
-                        service.displayClothes();
+                        displayBooks(sc);
+//                        service.displayClothes();
+//                        System.out.println("Your clothes list");
+////                        clothingService.displayClothes();
                         break;
                     case 3:
                         service.displayClothes();
@@ -63,21 +66,31 @@ public class ClothingStoreApp {
                     case 4:
                         sc.nextLine();
                         service.displayClothes();
-                        System.out.println("Enter the clothes type to update");
-                        String type2 = sc.next();
-                        service.updateClothesByType(type2);
+                        System.out.println("Enter the clothes id to update");
+                        int id2 = sc.nextInt();
+                        service.updateClothesById(id2);
                         System.out.println("Please create the updated item");
                         Clothes updatedItem = createClothes(sc);
+                        service.removeClothesById(id2);
                         System.out.println(updatedItem);
+
                         break;
                     case 5:
                         System.out.println("Bye, Come back soon!");
-                        options = false;
+                        option = false;
                         break;
                 }
-            } while (options);
-        }catch (InputMismatchException e){
-            System.out.println("Sorry ,Wrong input! ");
+            } while (choice != 5);
+        } catch (InputMismatchException e) {
+            System.out.println("Sorry, Wrong input! ");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void displayBooks(Scanner sc) throws SQLException {
+        for (Clothes clothes : clothingService.displayClothes()) {
+            System.out.println(clothes);
         }
     }
 }

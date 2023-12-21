@@ -12,7 +12,7 @@ public class JDBConnection {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            System.out.println("Connected Successfully");
+            System.out.println("Yay! Connected Successfully");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

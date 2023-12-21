@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class ClothingServiceImp implements ClothingService {
@@ -15,7 +16,7 @@ public class ClothingServiceImp implements ClothingService {
         this.connection = JDBConnection.getConnection();
     }
 
-   // private ArrayList<Clothes> clothesList = new ArrayList<>();
+    // private ArrayList<Clothes> clothesList = new ArrayList<>();
 
 //    public ClothingServiceImp() {
 //        this.clothesList = clothesList;
@@ -23,15 +24,14 @@ public class ClothingServiceImp implements ClothingService {
 
     @Override
     public void addClothes(Clothes clothes) {
-        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO clothes(id, type, size, price, quantity) VALUES (?,?,?,?,?)"))
-                {
-                    statement.setInt(1, clothes.getId());
-                    statement.setString(2, clothes.getType());
-                    statement.setDouble(3, clothes.getSize());
-                    statement.setDouble(4, clothes.getPrice());
-                    statement.setInt(5, clothes.getQuantity());
+        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO clothes(id, type, size, price, quantity) VALUES (?,?,?,?,?)")) {
+            statement.setInt(1, clothes.getId());
+            statement.setString(2, clothes.getType());
+            statement.setDouble(3, clothes.getSize());
+            statement.setDouble(4, clothes.getPrice());
+            statement.setInt(5, clothes.getQuantity());
 
-                    statement.executeUpdate();
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -39,6 +39,28 @@ public class ClothingServiceImp implements ClothingService {
 //        clothesList.add(clothes);
 //        System.out.println("Added successfully!");
     }
+
+//    @Override
+//    public List<Clothes> displayClothes() throws SQLException {
+//        List <Clothes> clothesList = new ArrayList<>();
+//
+//        try(PreparedStatement statement = connection.prepareStatement("SELECT*FROM Clothing_DB" )){
+//            try(ResultSet rs =statement.executeQuery()){
+//                while (rs.next()){
+//                    int id =rs.getInt("id");
+//                    String type =rs.getString("type");
+//                    double size =rs.getDouble("size");
+//                    double price = rs.getDouble("price");
+//                    int quantity =rs.getInt("quantity");
+//
+//                    Clothes clothes = new Clothes (id, type, size, price, quantity);
+//                    clothesList.add(clothes);
+//
+//                }
+//            }
+//        }
+//        return clothesList;
+//    }
 
     @Override
     public List<Clothes> displayClothes() {
@@ -58,17 +80,19 @@ public class ClothingServiceImp implements ClothingService {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return clothesList;
-//        if (clothesList.isEmpty()) {
+
+//            throw new RuntimeException(e);
+        }
+        //        if (clothesList.isEmpty()) {
 //            System.out.println("Your cart is empty!");
 //        } else
 //            for (Clothes clothes : clothesList) {
 //                System.out.println(clothes);
 //            }
 //        return clothesList;
-    }
 
     @Override
     public Clothes removeClothesById(int Id) {
@@ -82,7 +106,6 @@ public class ClothingServiceImp implements ClothingService {
         }
         return null;
     }
-
 
 //        for (Clothes c1 : clothesList) {
 //            try {
@@ -101,17 +124,19 @@ public class ClothingServiceImp implements ClothingService {
 //        }
 
     @Override
-    public void updateClothesByType(String type) {
-        try(PreparedStatement statement = connection.prepareStatement("UPDATE clothes SET id = ? type = ? size =? price=? quantity=? WHERE id = ? ")) {
-        statement.setInt(1, Clothes.getId());
-        statement.setString(2, Clothes.getType());
-        statement.setDouble(3, Clothes.getSize());
-        statement.setDouble(4, Clothes.getPrice());
-        statement.setInt(5, Clothes.getQuantity());
-        statement.executeUpdate();
+    public void updateClothesById(int id2)  {
+        try (PreparedStatement statement = connection.prepareStatement("UPDATE clothes SET id = ? type = ? size =? price=? quantity=? WHERE id = ? ")) {
+            statement.setInt(1, Clothes.getId());
+            statement.setString(2, Clothes.getType());
+            statement.setDouble(3, Clothes.getSize());
+            statement.setDouble(4, Clothes.getPrice());
+            statement.setInt(5, Clothes.getQuantity());
+
+            statement.executeUpdate();
+
             System.out.println("Updated Successfully thank You");
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
@@ -125,4 +150,5 @@ public class ClothingServiceImp implements ClothingService {
 //            }
 //        }
     }
+
 }
